@@ -40,7 +40,7 @@ export default function App() {
             <LoginView />
           </PublicRoute>
           
-          <PrivateRoute path="/contacts" redirectTo='/login'>
+          <PrivateRoute path="/contacts" redirectTo='/'>
             <ContactsView />
           </PrivateRoute>
         </Suspense>

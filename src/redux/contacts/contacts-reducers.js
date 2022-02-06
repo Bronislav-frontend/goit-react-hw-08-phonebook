@@ -33,7 +33,8 @@ const contactsReducer = createReducer([], {
   },
 
   [deleteContact.fulfilled]: (state, {payload}) => {
-   state.filter(({ id }) => id !== payload)
+    const refreshedState = state.filter(({ id }) => id !== payload)
+    return refreshedState;
   }
 });
 

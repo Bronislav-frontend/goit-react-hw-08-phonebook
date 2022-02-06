@@ -14,7 +14,7 @@ export default function AuthMenu () {
          Register
        </NavLink>
        <NavLink to="/login" exact className={s.link} activeClassName={s.active}>
-         Login
+         Sign in
        </NavLink>
      </div>
    );  

@@ -8,7 +8,7 @@ import s from './AppBar.module.css'
 
 export default function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn)
-  console.log(isLoggedIn);
+  
   return (
     <header className={s.header}>
       <Navigation />
