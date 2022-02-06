@@ -6,10 +6,11 @@ import ContactsForm from '../../components/ContactsForm/ContactsForm';
 import Filter from '../../components/Filter/Filter';
 import Contacts from '../../components/Contacts/Contacts';
 
-import s from './ContactsView.css';
+import s from './ContactsView.module.css';
 
 export default function ContactsView() {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);

@@ -29,8 +29,9 @@ const contactsReducer = createReducer([], {
     } return [...state, payload];
   },
 
-  [deleteContact.fulfilled]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload.id),
+  [deleteContact.fulfilled]: (state, { payload }) => {
+    return state.filter(({ id }) => id !== payload.id)
+  }
 });
 
 const filterReducer = createReducer('', {

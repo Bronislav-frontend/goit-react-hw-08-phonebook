@@ -1,38 +1,51 @@
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Suspense, useEffect } from 'react';
 import { lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { authOperations, authSelectors } from '../../redux/auth';
 
 import AppBar from '../AppBar/AppBar'
-import HomeView from '../../views/HomeView'
-import RegisterView from '../../views/RegisterView'
-import LoginView from '../../views/LoginView'
-import ContactsView from '../../views/ContactsView/ContactsView';
+import PublicRoute from '../Routes/PublicRoute';
+import PrivateRoute from '../Routes/PrivateRoute';
 
-// const HomeView = lazy(() =>
-//   import('../../views/HomeView' /* webpackChunkName: "home-view"*/),
-// );
-// const RegisterView = lazy(() =>
-//   import('../../views/RegisterView' /* webpackChunkName: "register-view"*/),
-// );
-// const LoginView = lazy(() =>
-//   import('../../views/LoginView' /* webpackChunkName: "login-view"*/),
-// );
-// const ContactsView = lazy(() =>
-//   import('../../views/ContactsView' /* webpackChunkName: "contacts-view"*/),
-// );
+const HomeView = lazy(() => import('../../views/HomeView'));
+const RegisterView = lazy(() => import('../../views/RegisterView'));
+const LoginView = lazy(() => import('../../views/LoginView'));
+const ContactsView = lazy(() => import('../../views/ContactsView/ContactsView'));
 
 export default function App() {
+  const dispatch = useDispatch()
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrentUser);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser())
+  }, [dispatch])
 
   return (
-    <>
+    !isFetchingCurrentUser && (
+      <>
       <AppBar />
 
       <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route exact path="/register" component={RegisterView} />
-        <Route exact path="/login" component={LoginView} />
-        <Route exact path="/contacts" component={ContactsView} />
+        <Suspense fallback={<h2>Loading</h2>}>
+          <PublicRoute exact path="/">
+            <HomeView />
+          </PublicRoute>
+
+          <PublicRoute exact path="/register" restricted>
+            <RegisterView />
+          </PublicRoute>
+
+          <PublicRoute exact path="/login" restricted redirectTo="/contacts">
+            <LoginView />
+          </PublicRoute>
+          
+          <PrivateRoute path="/contacts">
+            <ContactsView />
+          </PrivateRoute>
+        </Suspense>
       </Switch>
     </>
-  );
+    )
+  )
 }
