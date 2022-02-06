@@ -22,17 +22,18 @@ const contactsReducer = createReducer([], {
 
     if (isDublicateName) {
       alert(`${payload.name} is already in contacts.`);
+      return
     } else if (isDublicateNumber) {
        alert(`${payload.number} is already in contacts.`);
+       return;
     } else if (!payload.name.trim() || !payload.number.trim()) {
        alert("Enter the contact's name and number phone!");
+       return
     } return [...state, payload];
   },
 
-  [deleteContact.fulfilled]: (state, { payload }) => {
-    console.log(state)
-    console.log(payload)
-    return state.filter(({ id }) => id !== payload.id)
+  [deleteContact.fulfilled]: (state, {payload}) => {
+   state.filter(({ id }) => id !== payload)
   }
 });
 
