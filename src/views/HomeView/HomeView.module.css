@@ -1,0 +1,16 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: aqua;
+  background-color: rgba(71, 71, 71, 0.8);
+  padding: 20px 20px;
+}
+
+.word {
+  color: rgb(2, 255, 171);
+}

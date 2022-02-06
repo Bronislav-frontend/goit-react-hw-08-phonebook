@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authOperations } from '../redux/auth';
+import { authOperations } from '../../redux/auth';
+import s from './RegisterView.module.css'
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -28,36 +29,42 @@ export default function RegisterView() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
-
-      <form onSubmit={handleSubmit}autoComplete="off">
-        <label>
+    <div className={s.section}>
+      <form onSubmit={handleSubmit} autoComplete="off" className={s.form}>
+        <label className={s.label}>
           Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            className={s.input}
+          />
         </label>
 
-        <label>
+        <label className={s.label}>
           Почта
           <input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            className={s.input}
           />
         </label>
 
-        <label>
+        <label className={s.label}>
           Пароль
           <input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            className={s.input}
           />
         </label>
 
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" className={s.button}>Зарегистрироваться</button>
       </form>
     </div>
   );

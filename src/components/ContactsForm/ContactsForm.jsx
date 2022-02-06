@@ -25,41 +25,42 @@ export default function ContactsForm () {
     };
 
     return (
-        <form
-        className={s.form}
-        onSubmit={handleSubmit}
-    >
+      <form className={s.form} onSubmit={handleSubmit}>
         <label>
-            <p className={s.text}>Name</p> 
-            <input
-                type="text"
-                name="name"
-                value={name}
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required
-                onChange={handleChange}
-                autoComplete="off"
-            />
+          <p className={s.text}>Name</p>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            onChange={handleChange}
+            autoComplete="off"
+            className={s.input}
+          />
         </label>
         <label>
-            <p className={s.text}>Phone number</p> 
-            <input
-                type="tel"
-                name="number"
-                value={number}
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
-                onChange={handleChange}
-                autoComplete="off"
-            />
+          <p className={s.text}>Phone number</p>
+          <input
+            type="tel"
+            name="number"
+            value={number}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            onChange={handleChange}
+            autoComplete="off"
+            className={s.input}
+          />
         </label>
         <p className={s.text}>
-            <button className={s.btn} type="submit">Add contact</button>
-        </p>    
-    </form>    
-    )
+          <button className={s.btn} type="submit">
+            Add contact
+          </button>
+        </p>
+      </form>
+    );
 }
 
 

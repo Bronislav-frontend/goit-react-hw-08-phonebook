@@ -16,3 +16,20 @@
   border: none;
   border-radius: 3px;
 }
+
+.btn:hover,
+.btn:focus {
+  outline: 1px solid aqua;  
+}
+
+.input {
+  padding: 0 14px;
+  min-height: 30px;
+  min-width: 250px;
+  outline: none;
+}
+
+.input:hover,
+.input:focus {
+  outline: 1px solid aqua;  
+}

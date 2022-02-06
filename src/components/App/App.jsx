@@ -8,9 +8,9 @@ import AppBar from '../AppBar/AppBar'
 import PublicRoute from '../Routes/PublicRoute';
 import PrivateRoute from '../Routes/PrivateRoute';
 
-const HomeView = lazy(() => import('../../views/HomeView'));
-const RegisterView = lazy(() => import('../../views/RegisterView'));
-const LoginView = lazy(() => import('../../views/LoginView'));
+const HomeView = lazy(() => import('../../views/HomeView/HomeView'));
+const RegisterView = lazy(() => import('../../views/RegisterView/RegisterView'));
+const LoginView = lazy(() => import('../../views/LoginView/LoginView'));
 const ContactsView = lazy(() => import('../../views/ContactsView/ContactsView'));
 
 export default function App() {
@@ -40,7 +40,7 @@ export default function App() {
             <LoginView />
           </PublicRoute>
           
-          <PrivateRoute path="/contacts">
+          <PrivateRoute path="/contacts" redirectTo='/login'>
             <ContactsView />
           </PrivateRoute>
         </Suspense>

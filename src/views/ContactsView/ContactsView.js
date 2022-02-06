@@ -16,7 +16,7 @@ export default function ContactsView() {
   }, [dispatch]);
 
   return (
-    <div className={s.container}>
+    <div className={s.section}>
       <Section title="Phonebook">
         <ContactsForm />
       </Section>
