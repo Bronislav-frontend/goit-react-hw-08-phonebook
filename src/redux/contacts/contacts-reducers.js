@@ -5,37 +5,21 @@ import {
   addContact,
   deleteContact,
 } from './contacts-operations';
-import { filter } from './contacts-actions'
+import { filter } from './contacts-actions';
 
 const contactsReducer = createReducer([], {
   [fetchContacts.fulfilled]: (_state, { payload }) => {
-    return payload
+    return payload;
   },
 
   [addContact.fulfilled]: (state, { payload }) => {
-    const isDublicateName =  state.find(
-      contact => contact.name.toLowerCase() === payload.name.toLowerCase()
-    );
-    const isDublicateNumber = state.find(
-      contact => contact.number === payload.number,
-    );
-
-    if (isDublicateName) {
-      alert(`${payload.name} is already in contacts.`);
-      return
-    } else if (isDublicateNumber) {
-       alert(`${payload.number} is already in contacts.`);
-       return;
-    } else if (!payload.name.trim() || !payload.number.trim()) {
-       alert("Enter the contact's name and number phone!");
-       return
-    } return [...state, payload];
+    return [...state, payload];
   },
 
-  [deleteContact.fulfilled]: (state, {payload}) => {
-    const refreshedState = state.filter(({ id }) => id !== payload)
+  [deleteContact.fulfilled]: (state, { payload }) => {
+    const refreshedState = state.filter(({ id }) => id !== payload);
     return refreshedState;
-  }
+  },
 });
 
 const filterReducer = createReducer('', {
