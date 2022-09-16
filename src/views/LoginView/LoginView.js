@@ -42,9 +42,11 @@ export default function LoginView() {
             onChange={handleChange}
           />
         </label>
-        <p>You can enter using the following mail and passwords:</p>
-        <p>Mail: qaz123@mail.com</p>
-        <p>Password: 321zaqzaq</p>
+        <h3 className={s.text}>
+          You can enter using the following mail and password:
+        </h3>
+        <p className={s.text}>Mail: qaz123@mail.com</p>
+        <p className={s.text}>Password: 321zaqzaq</p>
         <button type="submit" className={s.button}>
           Sign in
         </button>
