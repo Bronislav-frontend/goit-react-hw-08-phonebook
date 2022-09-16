@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/contacts-operations';
 import { getContacts } from '../../redux/contacts/contacts-selectors';
+import { notificate } from '../../helpers/notifications';
 
 import s from './ContactsForm.module.css';
 
@@ -26,13 +27,13 @@ export default function ContactsForm() {
     );
 
     if (isDublicateName) {
-      alert(`${name} is already in contacts.`);
+      notificate(name);
       return;
     } else if (isDublicateNumber) {
-      alert(`${number} is already in contacts.`);
+      notificate(number);
       return;
     } else if (!name.trim() || !number.trim()) {
-      alert("Enter the contact's name and number phone!");
+      notificate();
       return;
     }
     dispatch(addContact({ name, number }));

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
-import s from './LoginView.module.css'
+import s from './LoginView.module.css';
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ export default function LoginView() {
   const [password, setPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
-   name === 'email' ? setEmail(value) : setPassword(value);
+    name === 'email' ? setEmail(value) : setPassword(value);
   };
 
   const handleSubmit = e => {
@@ -42,8 +42,12 @@ export default function LoginView() {
             onChange={handleChange}
           />
         </label>
-
-        <button type="submit" className={s.button}>Sign in</button>
+        <p>You can enter using the following mail and passwords:</p>
+        <p>Mail: qaz123@mail.com</p>
+        <p>Password: 321zaqzaq</p>
+        <button type="submit" className={s.button}>
+          Sign in
+        </button>
       </form>
     </div>
   );
